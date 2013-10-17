@@ -2,7 +2,9 @@
     "require": {
         "silex/silex": "~1.1",
         "twig/twig": ">=1.8,<2.0-dev",
-        "symfony/twig-bridge": "~2.3"
+        "symfony/twig-bridge": "~2.3",
+        "doctrine/dbal": "2.2.*",
+        "igorw/config-service-provider": "1.2.*"
     },
     "autoload": {
         "psr-0": {

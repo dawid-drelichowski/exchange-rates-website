@@ -1,0 +1,11 @@
+{
+    "debug": true,
+    "db.options": {
+        "driver": "pdo_mysql",
+        "dbhost": "localhost",
+        "dbname": "test",
+        "user": "root",
+        "password": ""
+    },
+    "twig.path": "%dir%/../views"
+}
