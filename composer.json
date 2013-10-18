@@ -1,4 +1,18 @@
 {
+    "name": "dawid-drelichowski/kantor-maks",
+    "authors": [
+        {
+            "name": "Dawid Drelichowski",
+            "email": "dawid.drelichowski@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/dawid-drelichowski/kantor-maks"
+        }
+    ],
     "require": {
         "silex/silex": "~1.1",
         "twig/twig": ">=1.8,<2.0-dev",
@@ -10,5 +24,9 @@
         "psr-0": {
             "Kantor": "src/"
         }
+    },
+    "scripts": {
+        "post-install-cmd": "npm install",
+        "post-update-cmd": "npm update"
     }
 }
