@@ -1,0 +1,20 @@
+{
+    "name": "kantor-maks",
+    "title": "Kantor Maks",
+    "description": "Kantor Maks exchange rates application",
+    "version": "0.0.1",
+    "homepage": "https://github.com/dawid-drelichowski/kantor-maks",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/dawid-drelichowski/kantor-maks.git"
+    },
+    "bugs" : {
+        "url" : "https://github.com/dawid-drelichowski/kantor-maks/issues"
+    },
+    "devDependencies": {
+        "bower": "~1.2.6"
+    },
+    "engines": {
+        "node": ">= 0.10.0"
+    }
+}
