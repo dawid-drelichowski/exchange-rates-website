@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/dawid-drelichowski/kantor-maks.png?branch=master)](https://travis-ci.org/dawid-drelichowski/kantor-maks)
