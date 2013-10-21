@@ -7,5 +7,14 @@
         "user": "root",
         "password": ""
     },
-    "twig.path": "%dir%/../views"
+    "twig.path": "%dir%/../views",
+    "security.firewalls": {
+        "admin": {
+            "pattern": "/admin",
+            "http": true,
+            "users": {
+                "admin": [ "ROLE_ADMIN", "5FZ2Z8QIkA7UTZ4BYkoC+GsReLf569mSKDsfods6LYQ8t+a8EW9oaircfMpmaLbPBh4FOBiiFyLfuZmTSUwzZg=="]
+            }
+        }
+    }
 }

@@ -13,4 +13,11 @@ class Index
             'data' => $app['data']->getExchangeRates()
         )); 
     }
+    
+    public function admin(Request $request, Application $app)
+    {
+        return $app['twig']->render('index.twig', array(
+            'data' => $app['data']->getExchangeRates()
+        )); 
+    }
 }
