@@ -2,7 +2,8 @@
     "name": "kantor-maks",
     "version": "0.0.1",
     "dependencies": {
-        "bootstrap": "~3.0.0"
+        "bootstrap": "~3.0.0",
+        "html5shiv": "3.7.*"
     },
     "devDependencies": {
     }
