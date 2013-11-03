@@ -21,8 +21,8 @@ class Data implements ServiceProviderInterface
         $this->db = $app['db'];
     }
     
-    public function getExchangeRates()
+    public function getExchangeRatesByTypeId($typeId)
     {
-        return $this->db->fetchAll('SELECT * FROM `test`');
+        return $this->db->fetchAll('SELECT * FROM `ExchangeRate` WHERE `TypeId` = ?', array($typeId));
     }
 }

@@ -16,7 +16,18 @@
         <header>
             <h1>{{ app.request.host }}</h1>
         </header>
-        <div>{{ data.0.name }}</div>
+        <table>
+            <thead>
+                
+            </thead>
+            <tbody>
+            {% for row in data %}
+                <tr>
+                    <td>{{ row.Country }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
         <footer></footer>
     </body>
 </html>
