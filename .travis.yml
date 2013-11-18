@@ -5,3 +5,4 @@ php:
   - 5.3
 before_script:
   - composer install
+  - cp config/default.json.dist config/default.json
