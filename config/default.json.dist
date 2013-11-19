@@ -3,8 +3,8 @@
     "db.options": {
         "driver": "pdo_mysql",
         "dbhost": "localhost",
-        "dbname": "test",
-        "user": "root",
+        "dbname": "KantorMaks",
+        "user": "travis",
         "password": ""
     },
     "twig.path": "%dir%/../views",
