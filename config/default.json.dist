@@ -3,6 +3,7 @@
     "db.options": {
         "driver": "pdo_mysql",
         "dbhost": "localhost",
+        "charset": "utf8",
         "dbname": "KantorMaks",
         "user": "travis",
         "password": ""

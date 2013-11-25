@@ -2,23 +2,20 @@
 
 namespace Kantor\Tests\Web;
 
-use Silex\WebTestCase;
-
-class IndexTest extends WebTestCase
+class IndexTest extends TestCase
 {
-    public function createApplication()
-    {
-        $app = require __DIR__.'/../../../../src/app.php';
-        $app['debug'] = true;
-        $app['exception_handler']->disable();
-        
-        return $app;
-    }
-
-    public function testIndex()
+    public function testOk()
     {
         $client = $this->createClient();
         $crawler = $client->request('GET', '/');
         $this->assertTrue($client->getResponse()->isOk());
+    }
+    
+    public function testPolishCharacters()
+    {
+        $client = $this->createClient();
+        $crawler = $client->request('GET', '/');
+        $this->assertTrue($client->getResponse()->isOk());
+        $this->assertRegExp('/Węgry/', $client->getResponse()->getContent());
     }
 }
