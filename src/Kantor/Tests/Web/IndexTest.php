@@ -4,18 +4,30 @@ namespace Kantor\Tests\Web;
 
 class IndexTest extends TestCase
 {
-    public function testOk()
+    private $client;
+    
+    public function setUp()
     {
-        $client = $this->createClient();
-        $crawler = $client->request('GET', '/');
-        $this->assertTrue($client->getResponse()->isOk());
+        parent::setUp();
+        $this->client = $this->createClient();
     }
     
-    public function testPolishCharacters()
+    public function testIndexOk()
     {
-        $client = $this->createClient();
-        $crawler = $client->request('GET', '/');
-        $this->assertTrue($client->getResponse()->isOk());
-        $this->assertRegExp('/Węgry/', $client->getResponse()->getContent());
+        $crawler = $this->client->request('GET', '/');
+        $this->assertTrue($this->client->getResponse()->isOk());
+    }
+    
+    public function testIndexPolishCharacters()
+    {
+        $crawler = $this->client->request('GET', '/');
+        $this->assertTrue($this->client->getResponse()->isOk());
+        $this->assertRegExp('/Węgry/', $this->client->getResponse()->getContent());
+    }
+    
+    public function testAdminNoPermissions()
+    {
+        $crawler = $this->client->request('GET', '/admin');
+        $this->assertEquals(401, $this->client->getResponse()->getStatusCode());
     }
 }
