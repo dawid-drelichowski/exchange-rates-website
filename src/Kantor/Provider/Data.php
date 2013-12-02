@@ -8,6 +8,9 @@ use Silex\Provider\DoctrineServiceProvider;
 
 class Data implements ServiceProviderInterface
 {
+    const TYPE_RETAIL = 1;
+    const TYPE_WHOLESALE = 2;
+    
     protected $db;
     
     public function register(Application $app)

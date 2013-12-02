@@ -1,0 +1,20 @@
+<table class="table table-condensed table-hover">
+    <thead>
+        <tr>
+            <th>Kraj</th>
+            <th>Waluta</th>
+            <th>Kupno</th>
+            <th>Sprzedaż</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for row in data %}
+        <tr>
+            <td>{{ row.Country }}</td>
+            <td>{{ row.Currency }}</td>
+            <td>{{ row.Purchase|number_format(4) }}</td>
+            <td>{{ row.Sale|number_format(4) }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
