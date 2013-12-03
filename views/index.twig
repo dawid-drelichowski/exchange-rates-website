@@ -1,37 +1,16 @@
-<!doctype html>
-<html>
-    <head>
-        <title>Kantory Maks</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <meta name="description" content="" />
-        <meta name="author" content="Dawid Drelichowski" />
-        <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" />
-        <!--[if lt IE 9]>
-            <script src="/components/html5shiv/dist/html5shiv-printshiv.js"></script>
-        <![endif]-->
-    </head>
-    <body class="container">
+{% extends 'layout.twig' %}
+
+{% block content %}
+    <article>
         <header>
-            <h1>Kantor Maks</h1>
+            <h3>Kursy detaliczne</h2>
         </header>
-        <section>
-            <article>
-                <header>
-                    <h3>Kursy detaliczne</h2>
-                </header>
-                {% include 'table.twig' with {'data': retail} %}
-            </article>
-            <article>
-                <header>
-                    <h3>Kursy hurtowe</h2>
-                </header>
-                 {% include 'table.twig' with {'data': wholesail} %}
-            </article>
-        </section>
-        <footer>
-             &copy; Copyright {{ 'now'|date('Y') }} by Dawid Drelichowski
-        </footer>
-    </body>
-</html>
+        {% include 'table.twig' with {'data': retail} %}
+    </article>
+    <article>
+        <header>
+            <h3>Kursy hurtowe</h2>
+        </header>
+         {% include 'table.twig' with {'data': wholesail} %}
+    </article>
+{% endblock %}

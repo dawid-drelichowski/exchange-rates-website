@@ -18,8 +18,6 @@ class Index
     
     public function admin(Request $request, Application $app)
     {
-        return $app['twig']->render('index.twig', array(
-            'data' => array()
-        )); 
+        return $app['twig']->render('admin.twig'); 
     }
 }
