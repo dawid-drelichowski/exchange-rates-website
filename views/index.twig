@@ -1,16 +1,16 @@
 {% extends 'layout.twig' %}
 
 {% block content %}
-    <article>
+    <article class="col-md-6">
         <header>
             <h3>Kursy detaliczne</h2>
         </header>
         {% include 'table.twig' with {'data': retail} %}
     </article>
-    <article>
+    <article class="col-md-6">
         <header>
             <h3>Kursy hurtowe</h2>
         </header>
-         {% include 'table.twig' with {'data': wholesail} %}
+        {% include 'table.twig' with {'data': wholesail} %}
     </article>
 {% endblock %}
