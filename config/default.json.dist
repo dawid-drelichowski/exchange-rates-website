@@ -1,5 +1,7 @@
 {
     "debug": true,
+    "locale": "pl",
+    "locale_fallbacks": ["pl"],
     "db.options": {
         "driver": "pdo_mysql",
         "dbhost": "localhost",
