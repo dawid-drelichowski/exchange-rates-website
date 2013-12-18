@@ -3,3 +3,11 @@
 {% block title %}{{ parent() }} - Administracja{% endblock %}
 
 {% block h1 %}{{ parent() }} - Administracja{% endblock %}
+
+{% block content %}
+<form>
+    {{ form_widget(form) }}
+
+    <input type="submit" name="submit" />
+</form>
+{% endblock %}
