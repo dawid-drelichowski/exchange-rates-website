@@ -10,8 +10,8 @@ class ExchangeRate extends AbstractType
     {
         $builder->add('country')
             ->add('currency')
-            ->add('purchase', 'number')
-            ->add('sale', 'number');
+            ->add('currentPurchase', 'number')
+            ->add('currentSale', 'number');
     }
 
     public function getName()

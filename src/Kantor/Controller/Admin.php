@@ -5,7 +5,9 @@ use Silex\Application;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
+use Kantor\Form\Transformer\ExchangeRates as ExchangeRatesTransformer;
 use Kantor\Form\ExchangeRate;
+use Kantor\Provider\Data;
 
 class Admin
 {
@@ -15,12 +17,16 @@ class Admin
         $app->register(new FormServiceProvider());
         $app->register(new ValidatorServiceProvider());
         
-        $form = $app['form.factory']->createBuilder()
+        $transformer = new ExchangeRatesTransformer();
+        $rates = $app['data']->getExchangeRatesByTypeId(Data::TYPE_RETAIL);
+        
+        $form = $app['form.factory']->createBuilder('form', $rates)
             ->add('rates', 'collection', array(
                 'type' => new ExchangeRate(),
                 'allow_add' => true,
                 'allow_delete' => true
             ))
+            ->addModelTransformer($transformer)
             ->getForm();
         
         return $app['twig']->render('admin.twig', array('form' => $form->createView())); 

@@ -5,9 +5,8 @@
 {% block h1 %}{{ parent() }} - Administracja{% endblock %}
 
 {% block content %}
-<form>
-    {{ form_widget(form) }}
-
-    <input type="submit" name="submit" class="btn" />
-</form>
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<input type="submit" name="submit" class="btn" />
+{{ form_end(form) }}
 {% endblock %}

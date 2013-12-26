@@ -10,21 +10,21 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`KantorMaks` /*!40100 DEFAULT CHARACTER 
 USE `KantorMaks`;
 
 CREATE TABLE `ExchangeRate` (
-  `Id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
-  `TypeId` tinyint(3) unsigned NOT NULL DEFAULT '1',
-  `Position` tinyint(3) unsigned DEFAULT NULL,
-  `Country` varchar(50) DEFAULT NULL,
-  `Currency` varchar(10) DEFAULT NULL,
-  `OldPurchase` float unsigned DEFAULT NULL,
-  `Purchase` float unsigned DEFAULT NULL,
-  `OldSale` float unsigned DEFAULT NULL,
-  `Sale` float unsigned DEFAULT NULL,
-  `Timestamp` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`Id`)
+  `id` tinyint(3) unsigned NOT NULL AUTO_INCREMENT,
+  `typeId` tinyint(3) unsigned NOT NULL DEFAULT '1',
+  `position` tinyint(3) unsigned DEFAULT NULL,
+  `country` varchar(50) DEFAULT NULL,
+  `currency` varchar(10) DEFAULT NULL,
+  `oldPurchase` float unsigned DEFAULT NULL,
+  `currentPurchase` float unsigned DEFAULT NULL,
+  `oldSale` float unsigned DEFAULT NULL,
+  `currentSale` float unsigned DEFAULT NULL,
+  `timestamp` timestamp NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*Data for the table `ExchangeRate` */
 
-INSERT  INTO `ExchangeRate`(`Id`,`TypeId`,`Position`,`Country`,`Currency`,`OldPurchase`,`Purchase`,`OldSale`,`Sale`,`Timestamp`) VALUES (1,1,1,'Stany Zjednoczone','USD',666.0,555.0,666.0,555.0,'2012-03-22 20:24:53'),(2,1,2,'Unia Europejska','EUR',777.0,777.0,777.0,777.0,'2012-03-22 20:24:53'),(3,1,3,'Wielka Brytania','GBP',4.47,4.47,4.68,4.68,'2012-03-20 23:25:45'),(4,1,4,'Szwajcaria','CHF',3.49,3.49,3.56,3.56,'2012-03-20 23:25:45'),(5,1,5,'Australia','AUD',3.01,3.01,3.07,3.07,'2012-03-20 23:25:45'),(6,1,6,'Kanada','CAD',2.85,2.85,2.94,2.94,'2012-03-20 23:25:45'),(7,1,7,'Szwecja','SEK',0.435,0.435,0.45,0.45,'2012-03-20 23:25:45'),(8,1,8,'Węgry','HUF',0.014,0.014,0.016,0.016,'2012-03-20 23:25:45'),(9,1,9,'Dania','DKK',0.528,0.528,0.543,0.543,'2012-03-20 23:25:45'),(10,1,10,'Norwegia','NOK',0.508,0.508,0.523,0.523,'2012-03-20 23:25:45'),(11,1,11,'Czechy','CZK',0.162,0.162,0.168,0.168,'2012-03-20 23:25:45'),(12,1,12,'Słowacja','SKK',0,0,0,0,'2012-03-20 23:25:45'),(13,1,13,'UE bilon','EURb',3.3,3.3,3.8,3.8,'2012-03-20 23:25:46'),(14,2,1,'Stany Zjednoczone','USD',666.0,666.0,666.0,666.0,'2012-03-22 20:23:16'),(15,2,2,'Unia Europejska','EUR',3,3,4,4,'2012-03-20 23:25:46'),(16,2,3,'Wielka Brytania','GBP',4,4,4,4,'2012-03-20 23:25:46'),(17,2,4,'Szwajcaria','CHF',3,3,3,3,'2012-03-20 23:25:46'),(18,2,5,'Australia','AUD',3,3,3,3,'2012-03-20 23:25:46'),(19,2,6,'Kanada','CAD',2,2,2,2,'2012-03-20 23:25:46'),(20,2,7,'Szwecja','SEK',0,0,0,0,'2012-03-20 23:25:46'),(21,2,8,'Węgry','HUF',0,0,0,0,'2012-03-20 23:25:46'),(22,2,9,'Dania','DKK',0,0,0,0,'2012-03-20 23:25:46'),(23,2,10,'Norwegia','NOK',0,0,0,0,'2012-03-20 23:25:46'),(24,2,11,'Czechy','CZK',0,0,0,0,'2012-03-20 23:25:46'),(25,2,12,'Słowacja','SKK',0,0,0,0,'2012-03-20 23:25:46'),(26,2,13,'UE bilon','EURb',3.555,3.555,3,3,'2012-03-20 23:25:46');
+INSERT  INTO `ExchangeRate`(`id`,`typeId`,`position`,`country`,`currency`,`oldPurchase`,`currentPurchase`,`oldSale`,`currentSale`,`timestamp`) VALUES (1,1,1,'Stany Zjednoczone','USD',666.0,555.0,666.0,555.0,'2012-03-22 20:24:53'),(2,1,2,'Unia Europejska','EUR',777.0,777.0,777.0,777.0,'2012-03-22 20:24:53'),(3,1,3,'Wielka Brytania','GBP',4.47,4.47,4.68,4.68,'2012-03-20 23:25:45'),(4,1,4,'Szwajcaria','CHF',3.49,3.49,3.56,3.56,'2012-03-20 23:25:45'),(5,1,5,'Australia','AUD',3.01,3.01,3.07,3.07,'2012-03-20 23:25:45'),(6,1,6,'Kanada','CAD',2.85,2.85,2.94,2.94,'2012-03-20 23:25:45'),(7,1,7,'Szwecja','SEK',0.435,0.435,0.45,0.45,'2012-03-20 23:25:45'),(8,1,8,'Węgry','HUF',0.014,0.014,0.016,0.016,'2012-03-20 23:25:45'),(9,1,9,'Dania','DKK',0.528,0.528,0.543,0.543,'2012-03-20 23:25:45'),(10,1,10,'Norwegia','NOK',0.508,0.508,0.523,0.523,'2012-03-20 23:25:45'),(11,1,11,'Czechy','CZK',0.162,0.162,0.168,0.168,'2012-03-20 23:25:45'),(12,1,12,'Słowacja','SKK',0,0,0,0,'2012-03-20 23:25:45'),(13,1,13,'UE bilon','EURb',3.3,3.3,3.8,3.8,'2012-03-20 23:25:46'),(14,2,1,'Stany Zjednoczone','USD',666.0,666.0,666.0,666.0,'2012-03-22 20:23:16'),(15,2,2,'Unia Europejska','EUR',3,3,4,4,'2012-03-20 23:25:46'),(16,2,3,'Wielka Brytania','GBP',4,4,4,4,'2012-03-20 23:25:46'),(17,2,4,'Szwajcaria','CHF',3,3,3,3,'2012-03-20 23:25:46'),(18,2,5,'Australia','AUD',3,3,3,3,'2012-03-20 23:25:46'),(19,2,6,'Kanada','CAD',2,2,2,2,'2012-03-20 23:25:46'),(20,2,7,'Szwecja','SEK',0,0,0,0,'2012-03-20 23:25:46'),(21,2,8,'Węgry','HUF',0,0,0,0,'2012-03-20 23:25:46'),(22,2,9,'Dania','DKK',0,0,0,0,'2012-03-20 23:25:46'),(23,2,10,'Norwegia','NOK',0,0,0,0,'2012-03-20 23:25:46'),(24,2,11,'Czechy','CZK',0,0,0,0,'2012-03-20 23:25:46'),(25,2,12,'Słowacja','SKK',0,0,0,0,'2012-03-20 23:25:46'),(26,2,13,'UE bilon','EURb',3.555,3.555,3,3,'2012-03-20 23:25:46');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

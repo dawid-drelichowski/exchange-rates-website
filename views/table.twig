@@ -10,10 +10,10 @@
     <tbody>
     {% for row in data %}
         <tr>
-            <td>{{ row.Country }}</td>
-            <td>{{ row.Currency }}</td>
-            <td>{{ row.Purchase|number_format(4) }}</td>
-            <td>{{ row.Sale|number_format(4) }}</td>
+            <td>{{ row.country }}</td>
+            <td>{{ row.currency }}</td>
+            <td>{{ row.currentPurchase|number_format(4) }}</td>
+            <td>{{ row.currentSale|number_format(4) }}</td>
         </tr>
     {% endfor %}
     </tbody>

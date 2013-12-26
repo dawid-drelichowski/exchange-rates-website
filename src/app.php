@@ -1,5 +1,4 @@
 <?php
-
 use Symfony\Component\Translation\Loader\YamlFileLoader;
 
 $app = new Silex\Application();
@@ -27,6 +26,6 @@ $app['translator'] = $app->share($app->extend('translator', function($translator
 }));
 
 $app->get('/', 'Kantor\Controller\Index::index');
-$app->get('/admin', 'Kantor\Controller\Admin::index');
+$app->match('/admin', 'Kantor\Controller\Admin::index');
 
 return $app;
