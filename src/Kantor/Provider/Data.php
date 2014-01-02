@@ -28,4 +28,19 @@ class Data implements ServiceProviderInterface
     {
         return $this->db->fetchAll('SELECT * FROM `ExchangeRate` WHERE `TypeId` = ?', array($typeId));
     }
+    
+    public function updateExchangeRate(array $data)
+    {
+        return $this;
+    }
+    
+    public function addExchangeRate(array $data)
+    {
+        return $this;
+    }
+    
+    public function deleteExchangeRate($id)
+    {
+        return $this;
+    }
 }

@@ -29,6 +29,16 @@ class Admin
             ->addModelTransformer($transformer)
             ->getForm();
         
+        $before = $form->getData();
+        
+        $form->handleRequest($request);
+        
+        if ($form->isValid()) {
+            $after = $form->getData();
+            $removed = array_diff_assoc($before, $after);
+            $added = array_diff_assoc($after, $before);
+        }
+        
         return $app['twig']->render('admin.twig', array('form' => $form->createView())); 
     }
 }
