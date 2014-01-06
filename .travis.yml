@@ -7,6 +7,6 @@ php:
 before_install:
   - composer self-update
 before_script:
-  - mysql < database/dump.sql
+  - mysql < db/dump.sql
   - composer install
   - cp config/default.json.dist config/default.json

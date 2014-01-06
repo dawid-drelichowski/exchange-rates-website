@@ -53,13 +53,6 @@ class Admin
         $added = array_diff_key($after, $before);
         $updated = array_intersect_key($after, $before);
         
-        //var_dump($before);
-        //var_dump($after);
-        
-        //var_dump($removed);
-        //var_dump($added);
-        var_dump($updated);
-        
         $this->remove($removed);
         $this->add($added);
         $this->update($updated);

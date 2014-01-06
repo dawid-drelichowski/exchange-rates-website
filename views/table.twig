@@ -12,8 +12,8 @@
         <tr>
             <td>{{ row.country }}</td>
             <td>{{ row.currency }}</td>
-            <td>{{ row.currentPurchase|number_format(4) }}</td>
-            <td>{{ row.currentSale|number_format(4) }}</td>
+            <td>{{ row.purchase|number_format(4) }}</td>
+            <td>{{ row.sale|number_format(4) }}</td>
         </tr>
     {% endfor %}
     </tbody>

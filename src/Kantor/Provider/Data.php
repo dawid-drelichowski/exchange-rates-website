@@ -28,7 +28,7 @@ class Data implements ServiceProviderInterface
     
     public function getExchangeRatesByTypeId($typeId)
     {
-        $query = sprintf('SELECT * FROM `%s` WHERE `TypeId` = ?', self::TABLE_NAME);
+        $query = sprintf('SELECT * FROM `%s` WHERE `typeId` = ?', self::TABLE_NAME);
         return $this->db->fetchAll($query, array($typeId));
     }
     
