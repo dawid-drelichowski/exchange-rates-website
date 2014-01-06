@@ -12,13 +12,17 @@ use Kantor\Provider\Data;
 class Admin
 {
     
+    private $dataProvider;
+    
     public function index(Request $request, Application $app)
     {
+        $this->dataProvider = $app['data'];
+        
         $app->register(new FormServiceProvider());
         $app->register(new ValidatorServiceProvider());
         
         $transformer = new ExchangeRatesTransformer();
-        $rates = $app['data']->getExchangeRatesByTypeId(Data::TYPE_RETAIL);
+        $rates = $this->dataProvider->getExchangeRatesByTypeId(Data::TYPE_RETAIL);
         
         $form = $app['form.factory']->createBuilder('form', $rates)
             ->add('rates', 'collection', array(
@@ -34,11 +38,51 @@ class Admin
         $form->handleRequest($request);
         
         if ($form->isValid()) {
-            $after = $form->getData();
-            $removed = array_diff_assoc($before, $after);
-            $added = array_diff_assoc($after, $before);
+            $this->persist($before, $form->getData());
         }
         
-        return $app['twig']->render('admin.twig', array('form' => $form->createView())); 
+        return $app['twig']->render('admin.twig', array(
+            'form' => $form->createView()
+        )); 
+    }
+    
+    private function persist(array $before, array $after)
+    {
+        
+        $removed = array_diff_key($before, $after);
+        $added = array_diff_key($after, $before);
+        $updated = array_intersect_key($after, $before);
+        
+        //var_dump($before);
+        //var_dump($after);
+        
+        //var_dump($removed);
+        //var_dump($added);
+        var_dump($updated);
+        
+        $this->remove($removed);
+        $this->add($added);
+        $this->update($updated);
+    }
+    
+    private function add(array $added)
+    {
+        foreach ($added as $item) {
+            $this->dataProvider->addExchangeRate($item);
+        }
+    }
+    
+    private function remove(array $removed)
+    {
+        foreach ($removed as $item) {
+            $this->dataProvider->removeExchangeRate((int) $item['id']);
+        }
+    }
+    
+    private function update(array $updated)
+    {
+        foreach ($updated as $item) {
+            $this->dataProvider->updateExchangeRate($item, (int) $item['id']);
+        }
     }
 }

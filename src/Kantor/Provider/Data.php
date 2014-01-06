@@ -8,6 +8,8 @@ use Silex\Provider\DoctrineServiceProvider;
 
 class Data implements ServiceProviderInterface
 {
+    const TABLE_NAME = 'ExchangeRate';
+    
     const TYPE_RETAIL = 1;
     const TYPE_WHOLESALE = 2;
     
@@ -26,21 +28,22 @@ class Data implements ServiceProviderInterface
     
     public function getExchangeRatesByTypeId($typeId)
     {
-        return $this->db->fetchAll('SELECT * FROM `ExchangeRate` WHERE `TypeId` = ?', array($typeId));
+        $query = sprintf('SELECT * FROM `%s` WHERE `TypeId` = ?', self::TABLE_NAME);
+        return $this->db->fetchAll($query, array($typeId));
     }
     
-    public function updateExchangeRate(array $data)
+    public function updateExchangeRate(array $data, $id)
     {
-        return $this;
+        return $this->db->update(self::TABLE_NAME, $data, array('id' => $id));
     }
     
     public function addExchangeRate(array $data)
     {
-        return $this;
+        return $this->db->insert(self::TABLE_NAME, $data);
     }
     
-    public function deleteExchangeRate($id)
+    public function removeExchangeRate($id)
     {
-        return $this;
+        return $this->db->delete(self::TABLE_NAME, array('id' => $id));
     }
 }
