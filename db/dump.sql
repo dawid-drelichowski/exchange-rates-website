@@ -5,28 +5,65 @@ USE `KantorMaks`;
 
 DROP TABLE IF EXISTS `ExchangeRate`;
 CREATE TABLE `ExchangeRate` (
-  `id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
-  `typeId` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1',
-  `country` VARCHAR(50) DEFAULT NULL,
-  `currency` VARCHAR(10) DEFAULT NULL,
-  `purchase` FLOAT UNSIGNED DEFAULT NULL,
-  `sale` FLOAT UNSIGNED DEFAULT NULL,
-  `purchaseTendency` TINYINT(1) NOT NULL DEFAULT '0',
-  `saleTendency` TINYINT(1) NOT NULL DEFAULT '0',
-  `timestamp` TIMESTAMP NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
+    `id` TINYINT(3) UNSIGNED NOT NULL AUTO_INCREMENT,
+    `typeId` TINYINT(3) UNSIGNED NOT NULL DEFAULT '1',
+    `country` VARCHAR(50) DEFAULT NULL,
+    `currency` VARCHAR(10) DEFAULT NULL,
+    `purchase` FLOAT UNSIGNED DEFAULT NULL,
+    `sale` FLOAT UNSIGNED DEFAULT NULL,
+    `purchaseTendency` TINYINT(1) NOT NULL DEFAULT '0',
+    `saleTendency` TINYINT(1) NOT NULL DEFAULT '0',
+    `timestamp` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+DROP FUNCTION IF EXISTS `tendency`;
+
+DELIMITER $$ 
+CREATE FUNCTION `tendency` (`first` FLOAT UNSIGNED, `second` FLOAT UNSIGNED)
+    RETURNS TINYINT
+BEGIN
+    DECLARE `result` TINYINT DEFAULT '0';
+    
+    IF `first` > `second` THEN
+        SET `result` = -1;
+    ELSEIF `first` < `second` THEN
+        SET `result` = 1;
+    END IF;
+    
+    RETURN `result`;
+END $$
+DELIMITER ;
 
 DROP PROCEDURE IF EXISTS `updateExchangeRate`;
 
 DELIMITER $$ 
-CREATE PROCEDURE `updateExchangeRate` (IN `id` TINYINT(3) UNSIGNED) 
-BEGIN 
-    DECLARE `currentPurchase`, `currentSale` FLOAT UNSIGNED DEFAULT NULL;
-    DECLARE `tendencyPurchase`, `tendencySale` TINYINT(1) DEFAULT NULL;
+CREATE PROCEDURE `updateExchangeRate` (
+    IN `id` TINYINT(3) UNSIGNED,
+    IN `typeId` TINYINT(3) UNSIGNED,
+    IN `country` VARCHAR(50),
+    IN `currency` VARCHAR(10),
+    IN `purchase` FLOAT UNSIGNED,
+    IN `sale` FLOAT UNSIGNED
+) BEGIN
+    DECLARE `purchaseTendency`, `saleTendency` TINYINT(1) DEFAULT '0';
     
-    SELECT `purchase`, `sale` INTO `currentPurchase`, `currentSale` FROM `ExchangeRate` WHERE `ExchangeRate`.`id` = `id`;
-    SELECT `currentPurchase`;
+    SELECT tendency(`ER`.`purchase`, `purchase`), tendency(`ER`.`sale`, `sale`)
+        INTO `purchaseTendency`, `saleTendency`
+        FROM `ExchangeRate` AS `ER`
+        WHERE `ER`.`id` = `id`;
+    
+    UPDATE `ExchangeRate` AS `ER`
+        SET
+            `ER`.`typeId` = `typeId`,
+            `ER`.`country` = `country`,
+            `ER`.`currency` = `currency`,
+            `ER`.`purchase` = `purchase`,
+            `ER`.`sale` = `sale`,
+            `ER`.`purchaseTendency` = `purchaseTendency`,
+            `ER`.`saleTendency` = `saleTendency`
+        WHERE `ER`.`id` = `id`;    
+        
 END $$ 
 DELIMITER ;
 

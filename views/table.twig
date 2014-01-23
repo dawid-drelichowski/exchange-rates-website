@@ -4,7 +4,9 @@
             <th>Kraj</th>
             <th>Waluta</th>
             <th>Kupno</th>
+            <th>Tendencja kupna</th>
             <th>Sprzedaż</th>
+            <th>Tendencja sprzedaży</th>
         </tr>
     </thead>
     <tbody>
@@ -13,7 +15,9 @@
             <td>{{ row.country }}</td>
             <td>{{ row.currency }}</td>
             <td>{{ row.purchase|number_format(4) }}</td>
+            <td>{{ row.purchaseTendency }}</td>
             <td>{{ row.sale|number_format(4) }}</td>
+            <td>{{ row.saleTendency }}</td>
         </tr>
     {% endfor %}
     </tbody>

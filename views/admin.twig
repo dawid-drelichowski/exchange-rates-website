@@ -6,6 +6,7 @@
 
 {% block content %}
 {{ form_start(form) }}
+{{ dump(form.rates.0.vars.value.typeId) }}
 {{ form_widget(form) }}
 <input type="submit" name="submit" class="btn" />
 {{ form_end(form) }}

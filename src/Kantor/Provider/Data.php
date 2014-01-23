@@ -26,6 +26,12 @@ class Data implements ServiceProviderInterface
         $this->db = $app['db'];
     }
     
+    public function getExchangeRates()
+    {
+        $query = sprintf('SELECT * FROM `%s`', self::TABLE_NAME);
+        return $this->db->fetchAll($query);
+    }
+    
     public function getExchangeRatesByTypeId($typeId)
     {
         $query = sprintf('SELECT * FROM `%s` WHERE `typeId` = ?', self::TABLE_NAME);
@@ -34,7 +40,9 @@ class Data implements ServiceProviderInterface
     
     public function updateExchangeRate(array $data, $id)
     {
-        return $this->db->update(self::TABLE_NAME, $data, array('id' => $id));
+        return $this->db->executeUpdate('CALL `updateExchangeRate`(?, ?, ?, ?, ?, ?)', array(
+            $id, $data['typeId'], $data['country'], $data['currency'], $data['purchase'], $data['sale']
+        ));
     }
     
     public function addExchangeRate(array $data)

@@ -17,6 +17,6 @@ class ExchangeRate extends AbstractType
 
     public function getName()
     {
-        return 'exchange_rate';
+        return 'exchangeRate';
     }
 }

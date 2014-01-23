@@ -22,7 +22,7 @@ class Admin
         $app->register(new ValidatorServiceProvider());
         
         $transformer = new ExchangeRatesTransformer();
-        $rates = $this->dataProvider->getExchangeRatesByTypeId(Data::TYPE_RETAIL);
+        $rates = $this->dataProvider->getExchangeRates();
         
         $form = $app['form.factory']->createBuilder('form', $rates)
             ->add('rates', 'collection', array(
