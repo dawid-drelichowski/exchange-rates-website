@@ -11,7 +11,7 @@ class Index
     {
         return $app['twig']->render('index.twig', array(
             'retail' => $app['data']->getExchangeRatesByTypeId(Data::TYPE_RETAIL),
-            'wholesail' => $app['data']->getExchangeRatesByTypeId(Data::TYPE_WHOLESALE)
+            'wholesale' => $app['data']->getExchangeRatesByTypeId(Data::TYPE_WHOLESALE)
         )); 
     }
 }

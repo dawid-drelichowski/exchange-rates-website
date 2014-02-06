@@ -5,7 +5,6 @@ use Silex\Application;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
 use Symfony\Component\HttpFoundation\Request;
-use Kantor\Form\Transformer\ExchangeRates as ExchangeRatesTransformer;
 use Kantor\Form\ExchangeRate;
 use Kantor\Provider\Data;
 
@@ -21,16 +20,22 @@ class Admin
         $app->register(new FormServiceProvider());
         $app->register(new ValidatorServiceProvider());
         
-        $transformer = new ExchangeRatesTransformer();
-        $rates = $this->dataProvider->getExchangeRates();
+        $rates = array(
+            'retail' =>  $this->dataProvider->getExchangeRatesByTypeId(Data::TYPE_RETAIL),
+            'wholesale' =>  $this->dataProvider->getExchangeRatesByTypeId(Data::TYPE_WHOLESALE)
+        );
         
         $form = $app['form.factory']->createBuilder('form', $rates)
-            ->add('rates', 'collection', array(
+            ->add('retail', 'collection', array(
                 'type' => new ExchangeRate(),
                 'allow_add' => true,
                 'allow_delete' => true
             ))
-            ->addModelTransformer($transformer)
+            ->add('wholesale', 'collection', array(
+                'type' => new ExchangeRate(),
+                'allow_add' => true,
+                'allow_delete' => true
+            ))
             ->getForm();
         
         $before = $form->getData();
@@ -48,11 +53,25 @@ class Admin
     
     private function persist(array $before, array $after)
     {
+        $removed = $added = $updated = array();
         
-        $removed = array_diff_key($before, $after);
-        $added = array_diff_key($after, $before);
-        $updated = array_intersect_key($after, $before);
-        
+        foreach ($before as $type => $rates) {
+            $removed = array_merge($removed, array_diff_key($rates, $after[$type]));
+            
+            $added = array_merge($added, array_diff_key($after[$type], $rates));
+
+            $updated = array_merge($updated, array_udiff_assoc(
+                array_diff_key($after[$type], $added),
+                $rates,
+                function($first, $second) {
+                    if ($first == $second) {
+                        return 0;
+                    }
+                    return 1;
+                }
+            ));
+        }
+
         $this->remove($removed);
         $this->add($added);
         $this->update($updated);
