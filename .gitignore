@@ -1,4 +1,5 @@
 vendor/
+logs/
 config/default.json
 npm-debug.log
 node_modules/
