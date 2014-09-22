@@ -10,7 +10,6 @@ use Kantor\Provider\Data;
 
 class Admin
 {
-    
     private $dataProvider;
     
     public function index(Request $request, Application $app)
