@@ -1,11 +1,10 @@
 <?php
-
 namespace Kantor\Tests\Web;
 
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\DomCrawler\Form;
 
-class AdminTest extends TestCase
+class AdminControllerTest extends WebTestCase
 {
     public function testAdminNoPermissions()
     {
@@ -24,7 +23,6 @@ class AdminTest extends TestCase
      */
     public function testAdminUpdate()
     {
-
         $expectedValues = array(
             'form' => array(
                 'retail' => array( array(

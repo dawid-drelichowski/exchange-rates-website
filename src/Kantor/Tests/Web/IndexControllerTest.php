@@ -2,7 +2,7 @@
 
 namespace Kantor\Tests\Web;
 
-class IndexTest extends TestCase
+class IndexControllerTest extends WebTestCase
 {
     
     public function testIndexOk()

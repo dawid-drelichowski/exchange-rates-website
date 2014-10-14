@@ -3,10 +3,10 @@
 namespace Kantor\Tests\Web;
 
 use Silex\Application;
-use Silex\WebTestCase;
+use Silex\WebTestCase as BaseWebTestCase;
 use Symfony\Component\BrowserKit\Client;
 
-abstract class TestCase extends WebTestCase
+abstract class WebTestCase extends BaseWebTestCase
 {
     /**
      * @var Client

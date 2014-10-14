@@ -4,7 +4,7 @@ namespace Kantor\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-class ExchangeRate extends AbstractType
+class ExchangeRateType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
