@@ -17,7 +17,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => $app['twig.path']
 ));
 $app->register(new Silex\Provider\DoctrineServiceProvider());
-$app->register(new Kantor\Provider\ExchangeRateManagerServiceProvider());
+$app->register(new Kantor\Provider\ExchangeRateDAOServiceProvider());
 
 $app['translator'] = $app->share($app->extend('translator', function($translator) {
     $translator->addLoader('yaml', new YamlFileLoader());

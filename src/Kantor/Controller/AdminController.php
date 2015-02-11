@@ -3,7 +3,7 @@ namespace Kantor\Controller;
 
 use Kantor\Form\ExchangeRateType;
 use Kantor\Service\ExchangeRateChangeDetector;
-use Kantor\Service\ExchangeRateManager;
+use Kantor\Service\ExchangeRateDAO;
 use Silex\Application;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
@@ -29,8 +29,8 @@ class AdminController
         $this->registerServices($app);
         
         $rates = array(
-            'retail' => $app['exchangeRate']->getByTypeId(ExchangeRateManager::TYPE_RETAIL),
-            'wholesale' => $app['exchangeRate']->getByTypeId(ExchangeRateManager::TYPE_WHOLESALE)
+            'retail' => $app['exchangeRate']->getByTypeId(ExchangeRateDAO::TYPE_RETAIL),
+            'wholesale' => $app['exchangeRate']->getByTypeId(ExchangeRateDAO::TYPE_WHOLESALE)
         );
 
         /** @var Form $form */
