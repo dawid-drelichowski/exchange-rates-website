@@ -3,13 +3,13 @@
 {% block content %}
     <article class="col-md-6">
         <header>
-            <h3>Kursy detaliczne</h3>
+            <h3>{{ 'exchangeRate.retail'|trans }}</h3>
         </header>
         {% include 'table.twig' with {'data': retail} %}
     </article>
     <article class="col-md-6">
         <header>
-            <h3>Kursy hurtowe</h3>
+            <h3>{{ 'exchangeRate.wholesale'|trans }}</h3>
         </header>
         {% include 'table.twig' with {'data': wholesale} %}
     </article>

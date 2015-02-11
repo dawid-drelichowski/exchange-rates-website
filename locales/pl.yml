@@ -1,4 +1,18 @@
 title:
     default: Kantory Maks
+    admin: Kantory Maks - Administracja
 h1:
     default: Kantory Maks
+    admin: Kantory Maks - Administracja
+author: Dawid Drelichowski
+copyright: '&copy; Copyright %date% by Dawid Drelichowski'
+exchangeRate:
+    retail: Kursy detaliczne
+    wholesale: Kursy hurtowe
+country: Kraj
+currency: Waluta
+purchase: Kupno
+sale: Sprzedaż
+tendency:
+    purchase: Tendencja kupna
+    sale: Tendencja sprzedaży
