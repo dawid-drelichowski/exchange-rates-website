@@ -5,8 +5,20 @@
 {% block h1 %}{{ 'h1.admin'|trans }}{% endblock %}
 
 {% block content %}
-{{ form_start(form) }}
-{{ form_widget(form) }}
-<input type="submit" name="submit" class="btn" />
-{{ form_end(form) }}
+    {{ form_start(form) }}
+    <div>
+        {% for type, rates in form if type != '_token' %}
+            {{  form_label(rates, 'exchangeRate.' ~ type) }}
+            {% for rate in rates %}
+                {{ form_row(rate.country, {label: 'country'}) }}
+                {{ form_row(rate.currency, {label: 'currency'}) }}
+                {{ form_row(rate.purchase, {label: 'purchase'}) }}
+                {{ form_row(rate.sale, {label: 'sale'}) }}
+                {{ form_row(rate.typeId) }}
+            {% endfor %}
+        {% endfor %}
+        {{ form_row(form._token) }}
+        <input type="submit" name="submit" class="btn" />
+    </div>
+    {{ form_end(form) }}
 {% endblock %}
