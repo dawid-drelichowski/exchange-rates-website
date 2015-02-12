@@ -18,83 +18,159 @@ class ExchangeRateChangeDetectorTest extends \PHPUnit_Framework_TestCase
         $this->changeDetector = new ExchangeRateChangeDetector();
     }
 
-    public function testGetAdded_whenExchangeRatesAdded_returnsAddedExchangeRatesArray()
+    /**
+     * @param array $before
+     * @param array $added
+     * @dataProvider exchangeRatesDataProvider
+     */
+    public function testGetAdded_whenExchangeRatesAdded_returnsAddedExchangeRatesArray(array $before, array $added)
     {
-        $before = $after = $this->getExchangeRatesBeforeChanges();
-        $added = $this->getDifferentExchangeRate();
+        $after = $before;
         $after[self::RETAIL_KEY][] = $added;
         $this->changeDetector->detect($before, $after);
 
-        $this->assertSame(array($added), $this->changeDetector->getAdded());
+        $this->assertAdded(array($added));
     }
 
-    public function testGetAdded_whenNoExchangeRatesAdded_returnsEmptyArray()
+    /**
+     * @param array $before
+     * @dataProvider exchangeRatesDataProvider
+     */
+    public function testGetAdded_whenNoExchangeRatesAdded_returnsEmptyArray(array $before)
     {
-        $before = $after = $this->getExchangeRatesBeforeChanges();
+        $after = $before;
         $this->changeDetector->detect($before, $after);
 
-        $this->assertSame(array(), $this->changeDetector->getAdded());
+        $this->assertAdded();
     }
 
-    public function testGetUpdated_whenExchangeRatesUpdated_returnsUpdatedExchangeRatesArray()
+    /**
+     * @param array $before
+     * @param array $updated
+     * @dataProvider exchangeRatesDataProvider
+     */
+    public function testGetUpdated_whenExchangeRatesUpdated_returnsUpdatedExchangeRatesArray(array $before, array $updated)
     {
-        $before = $after = $this->getExchangeRatesBeforeChanges();
-        $updated = $this->getDifferentExchangeRate();
+        $after = $before;
         $after[self::RETAIL_KEY][0] = $updated;
         $this->changeDetector->detect($before, $after);
 
-        $this->assertSame(array($updated), $this->changeDetector->getUpdated());
+        $this->assertUpdated(array($updated));
     }
 
-    public function testGetUpdated_whenNoExchangeRatesUpdated_returnsEmptyArray()
+    /**
+     * @param array $before
+     * @dataProvider exchangeRatesDataProvider
+     */
+    public function testGetUpdated_whenNoExchangeRatesUpdated_returnsEmptyArray(array $before)
     {
-        $before = $after = $this->getExchangeRatesBeforeChanges();
+        $after = $before;
         $this->changeDetector->detect($before, $after);
 
-        $this->assertSame(array(), $this->changeDetector->getUpdated());
+        $this->assertUpdated();
     }
 
-    public function testGetRemoved_whenExchangeRatesRemoved_returnsRemovedExchangeRatesArray()
+    /**
+     * @param array $before
+     * @dataProvider exchangeRatesDataProvider
+     */
+    public function testGetRemoved_whenExchangeRatesRemoved_returnsRemovedExchangeRatesArray(array $before)
     {
-        $before = $after = $this->getExchangeRatesBeforeChanges();
+        $after = $before;
         $removed = $after[self::RETAIL_KEY][0];
         unset($after[self::RETAIL_KEY][0]);
         $this->changeDetector->detect($before, $after);
 
-        $this->assertSame(array($removed), $this->changeDetector->getRemoved());
+        $this->assertRemoved(array($removed));
     }
 
-    public function testGetRemoved_whenNoExchangeRatesRemoved_returnsEmptyArray()
+    /**
+     * @param array $before
+     * @dataProvider exchangeRatesDataProvider
+     */
+    public function testGetRemoved_whenNoExchangeRatesRemoved_returnsEmptyArray(array $before)
     {
-        $before = $after = $this->getExchangeRatesBeforeChanges();
+        $after = $before;
         $this->changeDetector->detect($before, $after);
 
-        $this->assertSame(array(), $this->changeDetector->getRemoved());
+        $this->assertRemoved();
     }
 
-    public function testDetect_whenExchangeRatesAddedUpdatedAndRemoved()
+    /**
+     * @param array $before
+     * @param array $added
+     * @dataProvider exchangeRatesDataProvider
+     */
+    public function testDetect_whenExchangeRatesAddedUpdatedAndRemoved(array $before, array $added)
     {
-        $before = $after = $this->getExchangeRatesBeforeChanges();
-        $added = $updated = $this->getDifferentExchangeRate();
+        $after = $before;
         $after[self::RETAIL_KEY][] = $added;
-        $after[self::RETAIL_KEY][0] = $updated;
+        $after[self::RETAIL_KEY][0] = $added;
         $removed = $after[self::RETAIL_KEY][1];
         unset($after[self::RETAIL_KEY][1]);
         $this->changeDetector->detect($before, $after);
 
-        $this->assertSame(array($added), $this->changeDetector->getAdded());
-        $this->assertSame(array($updated), $this->changeDetector->getUpdated());
-        $this->assertSame(array($removed), $this->changeDetector->getRemoved());
+        $this->assertOperationsDone(array($added), array($added), array($removed));
     }
 
-    public function testDetect_whenNoExchangeRatesAddedUpdatedAndRemoved()
+    /**
+     * @param array $before
+     * @dataProvider exchangeRatesDataProvider
+     */
+    public function testDetect_whenNoExchangeRatesAddedUpdatedAndRemoved(array $before)
     {
-        $before = $after = $this->getExchangeRatesBeforeChanges();
+        $after = $before;
         $this->changeDetector->detect($before, $after);
 
-        $this->assertSame(array(), $this->changeDetector->getAdded());
-        $this->assertSame(array(), $this->changeDetector->getUpdated());
-        $this->assertSame(array(), $this->changeDetector->getRemoved());
+        $this->assertOperationsDone();
+    }
+
+    /**
+     * @return array
+     */
+    public function exchangeRatesDataProvider()
+    {
+        return array(
+            array(
+                $this->getExchangeRatesBeforeChanges(),
+                $this->getDifferentExchangeRate()
+            )
+        );
+    }
+
+    /**
+     * @param array $expected
+     */
+    private function assertAdded(array $expected = array())
+    {
+        $this->assertSame($expected, $this->changeDetector->getAdded());
+    }
+
+    /**
+     * @param array $expected
+     */
+    private function assertUpdated(array $expected = array())
+    {
+        $this->assertSame($expected, $this->changeDetector->getUpdated());
+    }
+
+    /**
+     * @param array $expected
+     */
+    private function assertRemoved(array $expected = array())
+    {
+        $this->assertSame($expected, $this->changeDetector->getRemoved());
+    }
+
+    /**
+     * @param array $added
+     * @param array $updated
+     * @param array $removed
+     */
+    private function assertOperationsDone(array $added = array(), array $updated = array(), $removed = array()) {
+        $this->assertAdded($added);
+        $this->assertUpdated($updated);
+        $this->assertRemoved($removed);
     }
 
     /**
