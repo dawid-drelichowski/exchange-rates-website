@@ -46,7 +46,7 @@ class AdminController
                 'allow_delete' => true
             ))
             ->getForm();
-        
+
         $before = $form->getData();
         
         $form->handleRequest($request);
@@ -55,7 +55,7 @@ class AdminController
             $changesDetector = $this->detectChanges($before, $form->getData());
             $this->persist($changesDetector);
         }
-        
+
         return $app['twig']->render('admin.twig', array(
             'form' => $form->createView()
         )); 
