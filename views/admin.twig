@@ -5,17 +5,17 @@
 {% block h1 %}{{ 'h1.admin'|trans }}{% endblock %}
 
 {% block content %}
-    {{ form_start(form) }}
+    {{ form_start(form, {attr: {'data-ng-app': 'ratesAdminApp', 'data-ng-controller': 'ratesCtrl'}}) }}
     <div>
         {% for type, rates in form if type != '_token' %}
             {{  form_label(rates, 'exchangeRate.' ~ type) }}
-            <!--<div data-prototype="{{ type }}" class="hidden">
+            <script type="text/ng-template" id="{{ type }}Prototype.html" class="hidden">
                 {{ form_row(rates.vars.prototype.country, {label: 'country'}) }}
                 {{ form_row(rates.vars.prototype.currency, {label: 'currency'}) }}
                 {{ form_row(rates.vars.prototype.purchase, {label: 'purchase'}) }}
                 {{ form_row(rates.vars.prototype.sale, {label: 'sale'}) }}
                 {{ form_row(rates.vars.prototype.typeId, {value: form.vars.value[type][0].typeId}) }}
-            </div>-->
+            </script>
             {% for rate in rates %}
                 {{ form_row(rate.country, {label: 'country'}) }}
                 {{ form_row(rate.currency, {label: 'currency'}) }}
@@ -28,4 +28,9 @@
         <input type="submit" name="submit" class="btn" />
     </div>
     {{ form_end(form) }}
+{% endblock %}
+
+{% block js %}
+    <script src="/components/angular/angular.min.js"></script>
+    <script src="/js/admin/app.js"></script>
 {% endblock %}

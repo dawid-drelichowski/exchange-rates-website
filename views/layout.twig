@@ -17,7 +17,8 @@
         </header>
         <section class="row">{% block content %}{% endblock %}</section>
         <footer>
-             {{ 'copyright'|trans({'%date%': 'now'|date('Y')})|raw }}
+            {{ 'copyright'|trans({'%date%': 'now'|date('Y')})|raw }}
         </footer>
+        {% block js %}{% endblock %}
     </body>
 </html>
