@@ -1,28 +1,37 @@
 {% extends 'layout.twig' %}
 
-{% block title %}{{ 'title.admin'|trans }}{% endblock %}
-
 {% block h1 %}{{ 'h1.admin'|trans }}{% endblock %}
 
 {% block content %}
-    {{ form_start(form, {attr: {'data-ng-app': 'ratesAdminApp', 'data-ng-controller': 'ratesCtrl'}}) }}
+    {{ form_start(form, {attr: {'data-ng-app': 'ratesAdminApp'}}) }}
     <div>
         {% for type, rates in form if type != '_token' %}
-            {{  form_label(rates, 'exchangeRate.' ~ type) }}
+            {{ form_label(rates, 'exchangeRate.' ~ type) }}
             <script type="text/ng-template" id="{{ type }}Prototype.html" class="hidden">
-                {{ form_row(rates.vars.prototype.country, {label: 'country'}) }}
-                {{ form_row(rates.vars.prototype.currency, {label: 'currency'}) }}
-                {{ form_row(rates.vars.prototype.purchase, {label: 'purchase'}) }}
-                {{ form_row(rates.vars.prototype.sale, {label: 'sale'}) }}
-                {{ form_row(rates.vars.prototype.typeId, {value: form.vars.value[type][0].typeId}) }}
+                <div data-rate>
+                    <a data-ng-click="remove(__name__)">&times;</a>
+                    {{ form_row(rates.vars.prototype.country, {label: 'country'}) }}
+                    {{ form_row(rates.vars.prototype.currency, {label: 'currency'}) }}
+                    {{ form_row(rates.vars.prototype.purchase, {label: 'purchase'}) }}
+                    {{ form_row(rates.vars.prototype.sale, {label: 'sale'}) }}
+                    {{ form_row(rates.vars.prototype.typeId, {value: form.vars.value[type][0].typeId}) }}
+                </div>
             </script>
-            {% for rate in rates %}
-                {{ form_row(rate.country, {label: 'country'}) }}
-                {{ form_row(rate.currency, {label: 'currency'}) }}
-                {{ form_row(rate.purchase, {label: 'purchase'}) }}
-                {{ form_row(rate.sale, {label: 'sale'}) }}
-                {{ form_row(rate.typeId) }}
-            {% endfor %}
+            <div data-ng-controller="RatesController">
+                <div data-rates="{{ type }}">
+                    {% for index, rate in rates %}
+                        <div data-rate>
+                            <a data-ng-click="remove({{ index }})">&times;</a>
+                            {{ form_row(rate.country, {label: 'country'}) }}
+                            {{ form_row(rate.currency, {label: 'currency'}) }}
+                            {{ form_row(rate.purchase, {label: 'purchase'}) }}
+                            {{ form_row(rate.sale, {label: 'sale'}) }}
+                            {{ form_row(rate.typeId) }}
+                        </div>
+                    {% endfor %}
+                </div>
+                <a data-ng-click="add()">add</a>
+            </div>
         {% endfor %}
         {{ form_row(form._token) }}
         <input type="submit" name="submit" class="btn" />
