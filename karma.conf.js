@@ -2,7 +2,11 @@ module.exports = function(config) {
     'use strict';
 
     config.set({
-        basePath: '',
+        files : [
+            'web/components/angular/angular.js',
+            'web/js/**/*.js',
+            'tests/**/*.js'
+        ],
         frameworks: ['jasmine'],
         reporters: ['progress'],
         port: 9876,
