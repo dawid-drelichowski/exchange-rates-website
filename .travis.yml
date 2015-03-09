@@ -9,7 +9,6 @@ before_install:
 before_script:
   - mysql < db/dump.sql
   - composer install
-  - npm install
   - cp config/default.json.dist config/default.json
 script:
-  - karma start
+  - ./node_modules/karma/bin/karma start
