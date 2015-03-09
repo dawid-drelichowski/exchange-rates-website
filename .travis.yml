@@ -10,5 +10,4 @@ before_script:
   - mysql < db/dump.sql
   - composer install
   - cp config/default.json.dist config/default.json
-script:
   - node_modules/karma/bin/karma start
