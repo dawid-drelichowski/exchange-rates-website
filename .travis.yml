@@ -4,10 +4,11 @@ php:
   - 5.6
   - 5.5
   - 5.4
-  - 5.3
 before_install:
   - composer self-update
 before_script:
   - mysql < db/dump.sql
   - composer install
   - cp config/default.json.dist config/default.json
+script:
+  - karma start
