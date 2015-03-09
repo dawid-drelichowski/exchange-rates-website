@@ -36,7 +36,13 @@
         }
     },
     "scripts": {
-        "post-install-cmd": "npm install",
-        "post-update-cmd": "npm update"
+        "post-install-cmd": [
+            "npm install",
+            "node_modules/bower/bin/bower install"
+        ],
+        "post-update-cmd": [
+            "npm update",
+          "node_modules/bower/bin/bower update"
+        ]
     }
 }
