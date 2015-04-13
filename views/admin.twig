@@ -3,7 +3,7 @@
 {% block h1 %}{{ 'h1.admin'|trans }}{% endblock %}
 
 {% block content %}
-    {{ form_start(form, {attr: {'data-ng-app': 'ratesAdminApp'}}) }}
+    {{ form_start(form, {attr: {'data-ng-app': 'RatesAdminApp'}}) }}
     <div>
         {% for type, rates in form if type != '_token' %}
             {{ form_label(rates, 'exchangeRate.' ~ type) }}

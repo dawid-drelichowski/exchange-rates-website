@@ -1,7 +1,7 @@
 (function(angular) {
     'use strict';
 
-    angular.module('ratesAdminApp', [])
+    angular.module('RatesAdminApp', [])
         .controller('RatesController', function($scope) {
             var rates = [];
 
