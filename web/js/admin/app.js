@@ -5,8 +5,8 @@
         .controller('RatesController', function($scope) {
             var rates = [];
 
-            $scope.$on('registerRate', function(event, data) {
-                rates.push(data);
+            $scope.$on('registerRate', function(event, scope) {
+                rates.push(scope);
             });
 
             $scope.remove = function(index) {
