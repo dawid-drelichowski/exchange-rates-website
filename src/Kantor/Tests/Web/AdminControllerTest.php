@@ -41,7 +41,6 @@ class AdminControllerTest extends WebTestCase
         $form = $this->getExchangeRateForm($crawler);
         $currentValues = $form->getPhpValues();
         $this->assertSame($expectedValues['form']['retail'][0], $currentValues['form']['retail'][0]);
-
     }
 
     /**

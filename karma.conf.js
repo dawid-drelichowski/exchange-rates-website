@@ -2,7 +2,7 @@ module.exports = function(config) {
     'use strict';
 
     config.set({
-        files : [
+        files: [
             'web/components/angular/angular.js',
             'web/components/angular-mocks/angular-mocks.js',
             'web/js/**/*.js',

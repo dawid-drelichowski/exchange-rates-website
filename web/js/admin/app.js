@@ -18,7 +18,7 @@
 
             $scope.add = function() {
                 $scope.$broadcast('addRate', rates.length);
-            }
+            };
         })
         .directive('rates', function($compile, $templateCache) {
             return {
@@ -33,7 +33,7 @@
                         )(scope.$new()));
                     });
                 }
-            }
+            };
         })
         .directive('rate', function() {
             return {
@@ -46,6 +46,6 @@
 
                     scope.$emit('registerRate', scope);
                 }
-            }
+            };
         });
 })(angular);

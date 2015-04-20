@@ -10,4 +10,5 @@ before_script:
   - mysql < db/dump.sql
   - composer install
   - cp config/default.json.dist config/default.json
+  - node_modules/eslint/bin/eslint.js tests/**/*.js web/js/**/*.js karma.conf.js
   - node_modules/karma/bin/karma start
