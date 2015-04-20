@@ -1,0 +1,13 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "jasmine": true
+  },
+  "globals": {
+    "angular": true
+  },
+  "rules": {
+    "quotes": [2, "single"]
+  }
+}
