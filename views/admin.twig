@@ -1,3 +1,6 @@
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{#{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}#}
+
 {% extends 'layout.twig' %}
 
 {% block h1 %}{{ 'h1.admin'|trans }}{% endblock %}
@@ -30,7 +33,7 @@
                         </div>
                     {% endfor %}
                 </div>
-                <a data-ng-click="add()">add</a>
+                <a data-ng-click="add()">{{ 'add'|trans }}</a>
             </div>
         {% endfor %}
         {{ form_row(form._token) }}
