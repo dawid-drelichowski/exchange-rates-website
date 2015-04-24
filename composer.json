@@ -1,5 +1,5 @@
 {
-    "name": "dawid-drelichowski/kantor-maks",
+    "name": "dawid-drelichowski/exchange-rates-website",
     "authors": [
         {
             "name": "Dawid Drelichowski",
@@ -10,7 +10,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/dawid-drelichowski/kantor-maks"
+            "url": "https://github.com/dawid-drelichowski/exchange-rates-website"
         }
     ],
     "require": {
@@ -42,7 +42,7 @@
         ],
         "post-update-cmd": [
             "npm update",
-          "node_modules/bower/bin/bower update"
+            "node_modules/bower/bin/bower update"
         ]
     }
 }

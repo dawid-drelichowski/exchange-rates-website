@@ -12,7 +12,7 @@
     bootstrap="vendor/autoload.php"
 >
     <testsuites>
-        <testsuite name="Kantor Test Suite">
+        <testsuite name="Exchange rates webstie test suite">
             <directory>./src</directory>
         </testsuite>
     </testsuites>

@@ -17,7 +17,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
     'twig.path' => $app['twig.path']
 ));
 $app->register(new Silex\Provider\DoctrineServiceProvider());
-$app->register(new Kantor\Provider\ExchangeRateDAOServiceProvider());
+$app->register(new ExchangeRatesWebsite\Provider\ExchangeRateDAOServiceProvider());
 
 $app['translator'] = $app->share($app->extend('translator', function($translator) {
     $translator->addLoader('yaml', new YamlFileLoader());
@@ -26,7 +26,7 @@ $app['translator'] = $app->share($app->extend('translator', function($translator
     return $translator;
 }));
 
-$app->get('/', 'Kantor\Controller\IndexController::index');
-$app->match('/admin', 'Kantor\Controller\AdminController::index');
+$app->get('/', 'ExchangeRatesWebsite\Controller\IndexController::index');
+$app->match('/admin', 'ExchangeRatesWebsite\Controller\AdminController::index');
 
 return $app;

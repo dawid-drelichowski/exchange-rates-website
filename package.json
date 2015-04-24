@@ -1,15 +1,15 @@
 {
-    "name": "kantor-maks",
-    "title": "Kantor Maks",
-    "description": "Kantor Maks exchange rates application",
+    "name": "exchange-rates-website",
+    "title": "Exchange rates website",
+    "description": "Exchange rates website",
     "version": "0.0.1",
-    "homepage": "https://github.com/dawid-drelichowski/kantor-maks",
+    "homepage": "https://github.com/dawid-drelichowski/exchange-rates-website",
     "repository": {
         "type": "git",
-        "url": "git://github.com/dawid-drelichowski/kantor-maks.git"
+        "url": "git://github.com/dawid-drelichowski/exchange-rates-website.git"
     },
     "bugs" : {
-        "url" : "https://github.com/dawid-drelichowski/kantor-maks/issues"
+        "url" : "https://github.com/dawid-drelichowski/exchange-rates-website/issues"
     },
     "devDependencies": {
         "bower": "1.3.*",

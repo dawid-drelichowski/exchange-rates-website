@@ -1,5 +1,5 @@
 <?php
-namespace Kantor\Form;
+namespace ExchangeRatesWebsite\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

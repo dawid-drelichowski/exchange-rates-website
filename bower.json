@@ -1,5 +1,5 @@
 {
-    "name": "kantor-maks",
+    "name": "exchange-rates-website",
     "version": "0.0.1",
     "dependencies": {
         "bootstrap": "3.2.*",

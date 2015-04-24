@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS `KantorMaks`;
-CREATE DATABASE IF NOT EXISTS `KantorMaks` DEFAULT CHARACTER SET utf8;
+DROP DATABASE IF EXISTS `ExchangeRatesWebsite`;
+CREATE DATABASE IF NOT EXISTS `ExchangeRatesWebsite` DEFAULT CHARACTER SET utf8;
 
-USE `KantorMaks`;
+USE `ExchangeRatesWebsite`;
 
 DROP TABLE IF EXISTS `ExchangeRate`;
 CREATE TABLE `ExchangeRate` (

@@ -1,5 +1,5 @@
 <?php
-namespace Kantor\Tests\Web;
+namespace ExchangeRatesWebsite\Tests\Web;
 
 use Symfony\Component\DomCrawler\Crawler;
 use Symfony\Component\DomCrawler\Form;

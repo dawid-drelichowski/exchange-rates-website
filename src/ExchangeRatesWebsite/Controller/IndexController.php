@@ -1,7 +1,7 @@
 <?php
-namespace Kantor\Controller;
+namespace ExchangeRatesWebsite\Controller;
 
-use Kantor\Service\ExchangeRateDAO;
+use ExchangeRatesWebsite\Service\ExchangeRateDAO;
 use Silex\Application;
 
 class IndexController

@@ -1,6 +1,6 @@
 <?php
 
-namespace Kantor\Tests\Web;
+namespace ExchangeRatesWebsite\Tests\Web;
 
 class IndexControllerTest extends WebTestCase
 {

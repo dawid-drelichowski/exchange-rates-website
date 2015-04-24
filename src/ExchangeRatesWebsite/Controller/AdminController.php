@@ -1,9 +1,9 @@
 <?php
-namespace Kantor\Controller;
+namespace ExchangeRatesWebsite\Controller;
 
-use Kantor\Form\ExchangeRateType;
-use Kantor\Service\ExchangeRateChangeDetector;
-use Kantor\Service\ExchangeRateDAO;
+use ExchangeRatesWebsite\Form\ExchangeRateType;
+use ExchangeRatesWebsite\Service\ExchangeRateChangeDetector;
+use ExchangeRatesWebsite\Service\ExchangeRateDAO;
 use Silex\Application;
 use Silex\Provider\FormServiceProvider;
 use Silex\Provider\ValidatorServiceProvider;
