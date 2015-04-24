@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/dawid-drelichowski/kantor-maks.png?branch=master)](https://travis-ci.org/dawid-drelichowski/kantor-maks)
+[![Build Status](https://travis-ci.org/dawid-drelichowski/exchange-rates-website.png?branch=master)](https://travis-ci.org/dawid-drelichowski/exchange-rates-website)
