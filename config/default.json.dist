@@ -1,8 +1,7 @@
 {
     "debug": true,
     "session.test": true,
-    "locale": "pl",
-    "locale_fallbacks": ["pl"],
+    "locale_fallbacks": ["en", "pl"],
     "db.options": {
         "driver": "pdo_mysql",
         "dbhost": "localhost",

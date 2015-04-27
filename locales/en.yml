@@ -1,0 +1,19 @@
+title:
+    default: Exchange rates
+    admin: Exchange rates - Administration
+h1:
+    default: Exchange rates
+    admin: Exchange rates - Administration
+author: Dawid Drelichowski
+copyright: '&copy; Copyright %date% by Dawid Drelichowski'
+exchangeRate:
+    retail: Retail
+    wholesale: Wholesale
+country: Country
+currency: Currency
+purchase: Purchase
+sale: Sale
+tendency:
+    purchase: Purchase tendency
+    sale: Sale tendency
+add: Add

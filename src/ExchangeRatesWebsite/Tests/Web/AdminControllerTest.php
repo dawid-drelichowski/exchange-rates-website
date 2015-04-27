@@ -28,8 +28,8 @@ class AdminControllerTest extends WebTestCase
                 'retail' => array( array(
                     'country' => 'Updated country',
                     'currency' => 'UC',
-                    'purchase' => '1,1000',
-                    'sale' => '1,2000',
+                    'purchase' => '1.1000',
+                    'sale' => '1.2000',
                     'typeId' => '1'
                 ))
             )
