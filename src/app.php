@@ -22,7 +22,6 @@ $app->register(new ExchangeRatesWebsite\Provider\ExchangeRateDAOServiceProvider(
 $app['translator'] = $app->share($app->extend('translator', function($translator) {
     $translator->addLoader('yaml', new YamlFileLoader());
     $translator->addResource('yaml', __DIR__.'/../locales/en.yml', 'en');
-    $translator->addResource('yaml', __DIR__.'/../locales/pl.yml', 'pl');
 
     return $translator;
 }));
