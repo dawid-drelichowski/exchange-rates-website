@@ -14,9 +14,13 @@ Build upon [Silex](http://silex.sensiolabs.org/) and [Angular](https://angularjs
 ## Installation
 
 1. [Clone](https://help.github.com/articles/importing-a-git-repository-using-the-command-line/) repository.
-2. Install database structure with db/dump.sql file. E.g. `mysql -u <user> - p < db/dump.sql`
+2. Install database structure with **db/dump.sql file**. E.g. `mysql -u <user> - p < db/dump.sql`
 3. Install dependencies with [Composer](https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies).  
    [NPM](https://www.npmjs.com/) and [Bower](http://bower.io/) dependencies will install automatically with [Composer post install scripts](https://getcomposer.org/doc/articles/scripts.md)
 4. Change configuration file:
-    1. Copy default configuration config/default.json.dist and rename it to default.json E.g. `cp config/default.json.dist config/default.json`
-    2. Edit copied and renamed config/default.json file as required (e.g. database credentials, admin credentials, locale). 
+    1. Copy default configuration **config/default.json.dist** and rename it to **default.json**. E.g. `cp config/default.json.dist config/default.json`
+    2. Edit copied and renamed config/default.json file as required (e.g. database credentials, locale).
+    3. You can change admin credentials (default login: 'admin', password: 'foo') as described in [Silex HTTP authentication manual](http://silex.sensiolabs.org/doc/providers/security.html#securing-a-path-with-http-authentication)
+5. Configure Your web server. [Silex manual](http://silex.sensiolabs.org/doc/web_servers.html) can be helpful.  
+   **web** is document root directory. [Nginx example](https://gist.github.com/dawid-drelichowski/f546532ce3a3d4340cce)
+
