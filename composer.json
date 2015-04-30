@@ -29,7 +29,7 @@
     },
     "require-dev": {
         "symfony/browser-kit": "~2.6",
-        "phpunit/phpunit": "4.5.*"
+        "phpunit/phpunit": "4.6.*"
     },
     "autoload": {
         "psr-0": {
