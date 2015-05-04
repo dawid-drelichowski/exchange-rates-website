@@ -39,7 +39,7 @@ Available routes:
 Unit tests based on [PHPUnit](https://phpunit.de/).  
 Functional tests based on [Silex/Symfony 2](http://silex.sensiolabs.org/doc/testing.html#webtestcase).
 
-Command: `vendor/phpunit/phpunit/phpunit` in main application directory.
+Command: `vendor/bin/phpunit` in main application directory.
 
 ####JavaScript
 
