@@ -1,6 +1,7 @@
 {
   "env": {
     "browser": true,
+    "amd": true,
     "node": true,
     "jasmine": true
   },
@@ -8,6 +9,7 @@
     "angular": true
   },
   "rules": {
-    "quotes": [2, "single"]
+    "quotes": [2, "single"],
+    "indent": 2
   }
 }

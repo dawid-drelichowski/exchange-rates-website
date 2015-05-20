@@ -3,11 +3,17 @@ module.exports = function(config) {
 
     config.set({
         files: [
-            'web/components/angular/angular.js',
-            'web/components/angular-mocks/angular-mocks.js',
-            'web/js/**/*.js',
-            'tests/**/*.js'
+            {pattern: 'js/src/**/*.js', included: false},
+            'js/tests/**/*.js'
         ],
+        preprocessors: {
+            'js/tests/**/*.js': ['webpack']
+        },
+        webpack: {
+            resolve: {
+                modulesDirectories: ['node_modules', 'js/src']
+            }
+        },
         frameworks: ['jasmine'],
         reporters: ['progress'],
         port: 9876,

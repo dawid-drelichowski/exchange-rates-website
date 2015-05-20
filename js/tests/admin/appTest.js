@@ -1,4 +1,4 @@
-(function(describe, it, expect, beforeEach, spyOn, angular) {
+define(['angular', 'angular-mocks', 'admin/app'], function(angular) {
     'use strict';
 
     describe('RatesController test', function () {
@@ -129,4 +129,4 @@
             });
         });
     });
-})(describe, it, expect, beforeEach, spyOn, angular);
+});
