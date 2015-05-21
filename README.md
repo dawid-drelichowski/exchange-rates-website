@@ -1,7 +1,7 @@
 # Exchange rates website [![Build Status](https://travis-ci.org/dawid-drelichowski/exchange-rates-website.png?branch=master)](https://travis-ci.org/dawid-drelichowski/exchange-rates-website)
 
 An exchange rates website with possibility to present, add, remove or change currencies and rates.  
-Build upon [Silex](http://silex.sensiolabs.org/), [Angular](https://angularjs.org/) and [Bootstrap](http://getbootstrap.com/).
+Build upon [Silex](http://silex.sensiolabs.org/), [Angular](https://angularjs.org/), [Bootstrap](http://getbootstrap.com/) and [Webpack](http://webpack.github.io/).
 
 ## Requirements
 
