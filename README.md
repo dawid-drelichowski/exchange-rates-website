@@ -34,14 +34,14 @@ Available routes:
 
 ## Tests
 
-####PHP
+#### PHP
 
 Unit tests based on [PHPUnit](https://phpunit.de/).  
 Functional tests based on [Silex/Symfony 2](http://silex.sensiolabs.org/doc/testing.html#webtestcase).
 
 Command: `vendor/bin/phpunit` in main application directory.
 
-####JavaScript
+#### JavaScript
 
 Unit tests based on [Karma](http://karma-runner.github.io/0.12/index.html), [PhantomJS](http://phantomjs.org/), [Jasmine](http://jasmine.github.io/) and [Angular mocks](https://docs.angularjs.org/api/ngMock).
 
